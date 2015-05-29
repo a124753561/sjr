@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" type="text/css" href="AmazeUI-2.3.0/assets/css/amazeui.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/common.css">
+    <script src="AmazeUI-2.3.0/assets/js/jquery.min.js"></script>
+    <script src="AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
+    <script>
+        $(function () {
+        });
+
+    </script>
+    <title>注册</title>
+</head>
+<body>
+<div class="page">
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:;" class="am-icon-chevron-left">
+            </a>
+        </div>
+        <h1 class="am-header-title" style="margin: 0 20%">
+            欢迎注册石巨人
+        </h1>
+
+        <div class="am-header-right am-header-nav">
+            <a href="#right-link" class="am-icon-ellipsis-v">
+            </a>
+        </div>
+    </header>
+    <div class="am-margin-top-sm am-padding-sm">
+        <form class="am-form am-form-horizontal">
+            <div class="am-form-group">
+                <label for="name" class="am-u-sm-4 am-form-label am-text-right">负责人姓名:</label>
+
+                <div class="am-u-sm-8">
+                    <input type="text" id="name" class="am-radius" name="name" placeholder="姓名">
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="IDNo" class="am-u-sm-4 am-form-label am-text-right">身份证号:</label>
+
+                <div class="am-u-sm-8">
+                    <input type="text" id="IDNo" class="am-radius"  name="IDNo" placeholder="正确身份证号">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="IDfront" class="am-u-sm-4 am-text-xs am-form-label am-text-right">身份证正反面:</label>
+                <div class="am-form-file am-u-sm-4">
+                <button type="button" class="am-btn am-btn-default am-btn-sm">
+                    <i class="am-icon-cloud-upload"></i> 上传</button>
+                     <input type="file" name="IDfront" multiple>
+                </div>
+                <div class="am-form-file am-u-sm-4">
+                    <button type="button" class="am-btn am-btn-default am-btn-sm">
+                        <i class="am-icon-cloud-upload"></i> 上传</button>
+                    <input type="file" name="IDback" multiple>
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="address" class="am-u-sm-4 am-form-label am-text-right am-radius">地址:</label>
+
+                <div class="am-u-sm-8">
+                    <textarea id="address" name="address" placeholder="输入详细地址" ></textarea>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <label for="companyName" class="am-u-sm-4 am-form-label am-text-right">公司名称:</label>
+
+                <div class="am-u-sm-8">
+                    <input type="text" id="companyName" class="am-radius"  name="companyName" placeholder="正确公司名称">
+                </div>
+            </div>
+            <div class="am-form-group">
+                <label for="factory" class="am-u-sm-4 am-form-label am-text-right">工厂所在地:</label>
+
+                <div class="am-u-sm-8">
+                    <textarea id="factory" name="factory" placeholder="输入详细地址" ></textarea>
+                </div>
+            </div>
+
+            <div class="am-form-group">
+                <div class="am-u-sm-12">
+                    <button type="submit" class="am-btn am-btn-danger am-u-sm-12 am-center">绑定微信并认证</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
