@@ -14,6 +14,36 @@
     <script src="AmazeUI-2.3.0/assets/js/amazeui.min.js"></script>
     <script>
         $(function () {
+            $("#driverCertificates").on("change", function () {
+                var $this = $(this);
+                var src = window.URL.createObjectURL(this.files[0]);
+                $("#imageThumnail").attr("src", src);
+                $("#imageThumnail").attr("data-rel", src);
+                $("#imageThumnail").closest("div").removeClass("am-hide").addClass("am-show");
+            });
+            $("#carCertificates").on("change", function () {
+                var $this = $(this);
+                var src = window.URL.createObjectURL(this.files[0]);
+                $("#imageThumnail-car").attr("src", src);
+                $("#imageThumnail-car").attr("data-rel", src);
+                $("#imageThumnail-car").closest("div").removeClass("am-hide").addClass("am-show");
+            });
+            $("#contract").on("change", function () {
+                var $this = $(this);
+                $("#multiImage").empty();
+                for (var i=0; i < this.files.length; i++) {
+                    if ("undefined" != typeof(this.files[i])) {
+                        var src = window.URL.createObjectURL(this.files[i]);
+                        var thumbnail = "";
+                        thumbnail = '<img  class=" am-img-responsive" src=' + src
+                                + ' data-rel=' + src
+                                + '>';
+                        $("#multiImage").append(thumbnail);
+                    }
+
+                }
+                $("#multiImage").closest("div").removeClass("am-hide").addClass("am-show");
+            });
         });
 
     </script>
@@ -65,8 +95,89 @@
                     </p>
                 </address>
             </div>
+
+
+            <div class="am-margin-top-sm am-padding-sm">
+                <form class="am-form am-form-horizontal">
+                    <div class="am-form-group">
+                        <label for="carNo" class="am-u-sm-4 am-form-label am-text-right">车牌号:</label>
+
+                        <div class="am-u-sm-8">
+                            <input type="text" id="carNo" class="am-radius" name="carNo" placeholder="输入车牌号">
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="driver" class="am-u-sm-4 am-form-label am-text-right">司机:</label>
+
+                        <div class="am-u-sm-8">
+                            <input type="text" id="driver" class="am-radius" name="driver" placeholder="司机姓名">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="linkPhone" class="am-u-sm-4 am-form-label am-text-right">联系电话:</label>
+
+                        <div class="am-u-sm-8">
+                            <input type="text" id="linkPhone" class="am-radius" name="linkPhone"
+                                   placeholder="司机联系电话">
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-file">
+                        <label for="driverCertificates" class="am-u-sm-4 am-form-label am-text-right">司机驾驶证:</label>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i>选择要上传的图片
+                        </button>
+                        <input id="driverCertificates" type="file" name="driverCertificates" multiple>
+                    </div>
+                    <div class="am-hide">
+                        <figure data-am-widget="figure" class="am am-figure am-figure-default "
+                                data-am-figure="{  pureview: 'true' }">
+                            <img id="imageThumnail" class=" am-img-responsive" src=""
+                                 data-rel=""/>
+                        </figure>
+                    </div>
+                    <div class="am-form-group am-form-file">
+                        <label for="carCertificates" class="am-u-sm-4 am-form-label am-text-right">司机行驶证:</label>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i>选择要上传的图片
+                        </button>
+                        <input id="carCertificates" type="file" name="carCertificates" multiple>
+                    </div>
+
+                    <div class="am-hide">
+                        <figure data-am-widget="figure" class="am am-figure am-figure-default "
+                                data-am-figure="{  pureview: 'true' }">
+                            <img id="imageThumnail-car" class=" am-img-responsive" src=""
+                                 data-rel=""/>
+                        </figure>
+                    </div>
+
+                    <div class="am-form-group am-form-file">
+                        <label for="contract" class="am-u-sm-4 am-form-label am-text-right">合同:</label>
+                        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i>选择要上传的图片
+                        </button>
+                        <input id="contract" type="file" name="contract" multiple>
+                    </div>
+
+                    <div class="am-hide">
+                        <figure id="multiImage" data-am-widget="figure" class="am am-figure am-figure-default "
+                                data-am-figure="{  pureview: 'true' }">
+
+                        </figure>
+                    </div>
+                    <div class="am-form-group">
+
+                        <div class="am-u-sm-12">
+                            <button class="am-btn am-btn-secondary am-center ">扫一扫</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
             <div class="am-panel-bd am-scrollable-horizontal am-panel-secondary"
-                 style="padding-left: 0px;padding-right: 0px; padding-top: 0px;">
+                 style="padding-left: 0px;padding-right: 0px; padding-top: 0px;border-top: 1px solid">
                 <table class="am-table am-text-sm" style="width: auto;">
                     <thead>
                     <tr class="am-danger am-text-center">
@@ -75,15 +186,9 @@
                         <td>品名(加工方式)</td>
                         <td>规格</td>
                         <td>数量</td>
-                        <td>单位</td>
-                        <td>单价</td>
+                        <td>已生成数量</td>
+                        <td>发车数量</td>
                         <td>总金额</td>
-                        <td>质量等级</td>
-                        <td>铺装单位</td>
-                        <td>备注</td>
-                        <td>附件(图片)</td>
-                        <td>深加工方式</td>
-                        <td>深加工数量</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -99,19 +204,6 @@
                         <td>12</td>
                         <td>45</td>
                         <td>45000</td>
-                        <td>中级</td>
-                        <td>地板</td>
-                        <td>3天内送达</td>
-                        <td>
-                            <figure data-am-widget="figure" class="am am-figure am-figure-default "
-                                    data-am-figure="{  pureview: 'true' }">
-                                <img class=" am-img-responsive" src="static/image/temp/sc.jpg"
-                                     data-rel="static/image/temp/sc.jpg"
-                                     alt="春天的花开秋天的风以及冬天的落阳"/>
-                            </figure>
-                        </td>
-                        <td>方式</td>
-                        <td>32</td>
 
                     </tr>
                     <tr>
@@ -126,19 +218,6 @@
                         <td>23</td>
                         <td>45</td>
                         <td>45000</td>
-                        <td>中级</td>
-                        <td>地板</td>
-                        <td>3天内送达</td>
-                        <td>
-                            <figure data-am-widget="figure" class="am am-figure am-figure-default "
-                                    data-am-figure="{  pureview: 'true' }">
-                                <img class=" am-img-responsive" src="static/image/temp/sc.jpg"
-                                     data-rel="static/image/temp/sc.jpg"
-                                     alt="春天的花开秋天的风以及冬天的落阳"/>
-                            </figure>
-                        </td>
-                        <td>方式</td>
-                        <td>32</td>
 
                     </tr>
                     <tr class="am-primary">
@@ -153,27 +232,14 @@
                         <td>12</td>
                         <td>45</td>
                         <td>45000</td>
-                        <td>中级</td>
-                        <td>地板</td>
-                        <td>3天内送达</td>
-                        <td>
-                            <figure data-am-widget="figure" class="am am-figure am-figure-default "
-                                    data-am-figure="{  pureview: 'true' }">
-                                <img class="am-img-thumbnail am-img-responsive" src="static/image/temp/sc.jpg"
-                                     data-rel="static/image/temp/sc.jpg"
-                                     alt="花岗岩"/>
-                            </figure>
-                        </td>
-                        <td>方式</td>
-                        <td>32</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="am-panel-footer ">
-            <button class="am-btn am-btn-danger am-fr">打印二维码</button>
-            <button class="am-btn am-btn-danger am-fr am-margin-right-sm">生成二维码</button>
+            <span>合计金额:1221w</span>
+            <button class="am-btn am-btn-danger am-fr">保存</button>
         </div>
     </div>
 </div>
